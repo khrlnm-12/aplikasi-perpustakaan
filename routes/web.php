@@ -18,12 +18,18 @@ use App\Http\Controllers\PasswordController;
 | HALAMAN LOGIN
 |--------------------------------------------------------------------------
 */
-
-Route::get('/', function () {
+Route::get('/login', function () {
 
     return view('login.index');
 
 });
+
+Route::post('/login', [
+
+    LoginController::class,
+    'login'
+
+])->name('login');
 
 /*
 |--------------------------------------------------------------------------
