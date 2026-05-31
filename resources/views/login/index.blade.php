@@ -577,7 +577,7 @@
         @endif
 
         <form
-            action="{{ url('/login') }}"
+            action="{{ secure_url('/login') }}"
             method="POST"
         >
 
