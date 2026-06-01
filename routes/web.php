@@ -28,39 +28,6 @@ Route::get('/login', function () {
 
 });
 
-
-/*
-|--------------------------------------------------------------------------
-| TEST EMAIL
-|--------------------------------------------------------------------------
-*/
-
-Route::get('/test-email', function () {
-
-    $transaksi = (object)[
-
-        'nama' => 'Egi Kurniawan',
-
-        'judul_buku' => 'Atomic Habits',
-
-        'tanggal_kembali' => now()->addDay(),
-
-    ];
-
-    Mail::to('farelmboiss@gmail.com')
-        ->send(
-
-            new ReminderMail(
-                $transaksi,
-                'reminder'
-            )
-
-        );
-
-    return 'Email berhasil dikirim';
-
-});
-
 /*
 |--------------------------------------------------------------------------
 | LOGIN
@@ -497,3 +464,30 @@ Route::post('/sanksi-selesai/{id}', [
     'sanksiSelesai'
 
 ])->name('sanksi.selesai');
+
+
+
+
+Route::get('/test-email', function () {
+
+    try {
+
+        Mail::raw(
+            'TEST EMAIL DARI RAILWAY',
+            function ($message) {
+
+                $message->to('irulzanam1206@gmail.com')
+                        ->subject('TES SMTP');
+
+            }
+        );
+
+        return 'EMAIL BERHASIL DIKIRIM';
+
+    } catch (\Exception $e) {
+
+        return $e->getMessage();
+
+    }
+
+});
