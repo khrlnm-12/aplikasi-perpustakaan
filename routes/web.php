@@ -28,12 +28,6 @@ Route::get('/login', function () {
 
 });
 
-Route::post('/login', [
-
-    LoginController::class,
-    'login'
-
-])->name('login');
 
 /*
 |--------------------------------------------------------------------------
